@@ -1,0 +1,14 @@
+# Netlify build config for the Rehbar landing site (Next.js 15, App Router).
+# The Next.js runtime turns /api/waitlist into a serverless function and serves
+# the static pages from the CDN. Env vars (SUPABASE_*) are set in the Netlify UI.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Next.js 15 needs Node 18.18+/20+. Pin it so builds are reproducible.
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
